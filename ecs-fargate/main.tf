@@ -1,9 +1,12 @@
+# File: ecs-fargate/main.tf
+
 terraform {
   required_version = ">= 1.3.0"
 }
 
 module "ecs_fargate" {
-  source  = "terraform-aws-modules/ecs/aws//modules/fargate-service"
+  # now points at the correct “service” submodule in the official registry
+  source  = "terraform-aws-modules/ecs/aws//modules/service"
   version = "~> 4.0"
 
   name                   = var.service_name
