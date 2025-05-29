@@ -10,7 +10,7 @@ variable "vpc_cidr" {
 
 variable "azs" {
   type        = list(string)
-  description = "List of availability zones"
+  description = "List of availability zones for the VPC"
 }
 
 variable "private_subnets" {
