@@ -1,3 +1,5 @@
+# s3-bucket/main.tf
+
 terraform {
   required_version = ">= 1.3.0"
 }
@@ -12,5 +14,5 @@ module "s3_bucket" {
   force_destroy = var.force_destroy
 
   server_side_encryption_configuration = var.server_side_encryption_configuration
-  lifecycle_rules                      = var.lifecycle_rules
+  lifecycle_rule                       = var.lifecycle_rules
 }
