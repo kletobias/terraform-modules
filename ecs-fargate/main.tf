@@ -3,8 +3,10 @@ terraform {
 }
 
 module "ecs_fargate" {
-    # This references the official ECS module’s submodule "fargate-service"
-    source  = "terraform-aws-modules/ecs/aws//modules/fargate-service"
+    source  = "git::https://github.com/kletobias/terraform-modules.git//ecs-fargate?ref=main"
+
+    # Calls the official ECS Service submodule instead of non-existent fargate-service
+    source  = "terraform-aws-modules/ecs/aws//modules/service"
     version = "~> 4.0"
 
     name                   = var.service_name
@@ -13,5 +15,5 @@ module "ecs_fargate" {
     vpc_id                 = var.vpc_id
     subnet_ids             = var.subnet_ids
 
-    container_definitions = jsonencode(var.container_definitions)
+    container_definitions  = jsonencode(var.container_definitions)
 }
