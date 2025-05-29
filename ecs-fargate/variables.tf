@@ -17,7 +17,7 @@ variable "memory" {
 
 variable "vpc_id" {
   type        = string
-  description = "VPC ID to run ECS tasks in"
+  description = "output of vpc module: VPC ID to run ECS tasks in"
 }
 
 variable "subnet_ids" {
