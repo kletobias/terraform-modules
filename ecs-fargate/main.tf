@@ -3,15 +3,15 @@ terraform {
 }
 
 module "ecs_fargate" {
-  source  = "terraform-aws-modules/ecs-fargate/aws"
+  # This references the official ECS module’s submodule "fargate-service"
+  source  = "terraform-aws-modules/ecs/aws//modules/fargate-service"
   version = "~> 4.0"
 
-  name       = var.service_name
-  cpu        = var.cpu
-  memory     = var.memory
-  vpc_id     = var.vpc_id
-  subnet_ids = var.subnet_ids
+  name          = var.service_name
+  cpu           = var.cpu
+  memory        = var.memory
+  vpc_id        = var.vpc_id
+  subnets       = var.subnet_ids
 
-  # Convert the container definitions from a variable to a JSON-encoded string
   container_definitions = jsonencode(var.container_definitions)
 }
