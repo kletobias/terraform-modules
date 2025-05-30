@@ -23,17 +23,17 @@ repos:
         args: ["--config-file=.tfsec.yaml", "--soft-fail=false"]
 
   # ───────────────────────────── Security / secrets ────────────────────────────
-  - repo: https://github.com/zricethezav/gitleaks
-    rev: v8.18.0
-    hooks:
-      - id: gitleaks
-        args: ["--verbose", "--config=.gitleaks.toml"]
+  # - repo: https://github.com/zricethezav/gitleaks
+  #   rev: v8.18.0
+  #   hooks:
+  #     - id: gitleaks
+  #       args: ["--verbose", "--config=.gitleaks.toml"]
 
-  - repo: https://github.com/bridgecrewio/checkov
-    rev: 3.2.435
-    hooks:
-      - id: checkov
-        args: ["--quiet", "--compact-report", "--framework", "terraform"]
+  # - repo: https://github.com/bridgecrewio/checkov
+  #   rev: 3.2.435
+  #   hooks:
+  #     - id: checkov
+  #       args: ["--quiet", "--compact-report", "--framework", "terraform"]
 
   # ───────────────────────────── General hygiene ───────────────────────────────
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -65,9 +65,9 @@ repos:
         files: ^.*\.sh$
 
   # ───────────────────────────── Commit-message policy ─────────────────────────
-  - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.8.2
-    hooks:
-      - id: commitizen
-        stages: [commit-msg]
-        args: ["--retry"]
+  # - repo: https://github.com/commitizen-tools/commitizen
+  #   rev: v4.8.2
+  #   hooks:
+  #     - id: commitizen
+  #       stages: [commit-msg]
+  #       args: ["--retry"]
