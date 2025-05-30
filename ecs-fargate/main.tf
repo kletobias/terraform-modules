@@ -6,16 +6,8 @@ terraform {
 # 1. ECS CLUSTER
 ########################
 module "cluster" {
-  # root module – *no* sub-dir
-  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-ecs.git?ref=v4.1.3"
-
-  # the only two variables we really need
-  create_cluster = true
-  cluster_name   = "${var.service_name}-cluster"
-
-  # turn off features we don’t need in a demo
-  create_capacity_providers = false
-  create_cloudwatch_log_group = false
+  source       = "git::https://github.com/terraform-aws-modules/terraform-aws-ecs.git?ref=v4.1.3"
+  cluster_name = "${var.service_name}-cluster"
 }
 
 ########################
