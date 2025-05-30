@@ -1,9 +1,9 @@
 output "bucket_id" {
-  description = "The name of the created bucket"
-  value       = module.s3_bucket.bucket_id
+  value       = module.s3_bucket.bucket_id   # ✔
+  description = "Bucket name"
 }
 
-output "arn" {
-  description = "The ARN of the bucket"
-  value       = module.s3_bucket.arn
+output "bucket_arn" {
+  value       = module.s3_bucket.bucket_arn  # ✔ (not `arn`)
+  description = "Bucket ARN"
 }
