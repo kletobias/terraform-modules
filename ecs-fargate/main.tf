@@ -6,33 +6,32 @@ terraform {
 # ECS CLUSTER
 ################
 module "cluster" {
-  source  = "terraform-aws-modules/ecs/aws//modules/cluster"
-  version = "~> 4.1"
-
-  name = "${var.service_name}-cluster"
+  # git URL + sub-path
+  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-ecs.git//modules/cluster?ref=v4.1.3"
+  name    = "${var.service_name}-cluster"
 }
 
-############################
+########################
 # FARGATE SERVICE
-############################
+########################
 module "service" {
-  source  = "terraform-aws-modules/ecs/aws//modules/service"
-  version = "~> 4.1"
+  # git URL + sub-path
+  source  = "git::https://github.com/terraform-aws-modules/terraform-aws-ecs.git//modules/service?ref=v4.1.3"
 
-  # ---- mandatory ----
+  # ----- mandatory -----
   name        = var.service_name
   cluster_arn = module.cluster.arn
   launch_type = "FARGATE"
 
-  # ---- networking ----
-  subnets         = var.subnet_ids
+  # ----- networking -----
+  subnets          = var.subnet_ids
   assign_public_ip = false
 
-  # ---- task size & scale ----
+  # ----- task size & scale -----
   cpu           = var.cpu
   memory        = var.memory
-  desired_count = 0           # scale-to-zero by default
+  desired_count = 0            # scale-to-zero
 
-  # ---- containers ----
+  # ----- containers -----
   container_definitions = jsonencode(var.container_definitions)
 }
